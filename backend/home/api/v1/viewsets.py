@@ -1,3 +1,13 @@
+from rest_framework import viewsets
+from rest_framework import authentication
+from .serializers import (
+    CustomTextSerializer,
+    Fftrghy64rjrSerializer,
+    GtjguySerializer,
+    HHHhgfhfhgfSerializer,
+    HomePageSerializer,
+    JHGJGJGSerializer,
+)
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.permissions import IsAdminUser
@@ -11,7 +21,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomText, HomePage
+from home.models import CustomText, Fftrghy64rjr, Gtjguy, HHHhgfhfhgf, HomePage, JHGJGJG
 
 
 class SignupViewSet(ModelViewSet):
@@ -49,3 +59,39 @@ class HomePageViewSet(ModelViewSet):
     authentication_classes = (SessionAuthentication, TokenAuthentication)
     permission_classes = [IsAdminUser]
     http_method_names = ["get", "put", "patch"]
+
+
+class HHHhgfhfhgfViewSet(viewsets.ModelViewSet):
+    serializer_class = HHHhgfhfhgfSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = HHHhgfhfhgf.objects.all()
+
+
+class JHGJGJGViewSet(viewsets.ModelViewSet):
+    serializer_class = JHGJGJGSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = JHGJGJG.objects.all()
+
+
+class GtjguyViewSet(viewsets.ModelViewSet):
+    serializer_class = GtjguySerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Gtjguy.objects.all()
+
+
+class Fftrghy64rjrViewSet(viewsets.ModelViewSet):
+    serializer_class = Fftrghy64rjrSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Fftrghy64rjr.objects.all()

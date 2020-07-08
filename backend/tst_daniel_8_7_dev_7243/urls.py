@@ -30,6 +30,8 @@ urlpatterns = [
     # Override email confirm to use allauth's HTML view instead of rest_auth's API view
     path("rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
     path("rest-auth/registration/", include("rest_auth.registration.urls")),
+    path("home/", include("home.urls")),
+    path("api/v1/", include("users.api.v1.urls")),
 ]
 
 admin.site.site_header = "tst-daniel-8-7"
@@ -44,9 +46,7 @@ api_info = openapi.Info(
 )
 
 schema_view = get_schema_view(
-    api_info,
-    public=True,
-    permission_classes=(permissions.IsAuthenticated,),
+    api_info, public=True, permission_classes=(permissions.IsAuthenticated,),
 )
 
 urlpatterns += [
